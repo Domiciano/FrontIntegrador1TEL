@@ -1,0 +1,23 @@
+.domiContainer{
+   background-color: blueviolet; 
+}
+
+#userCardContainer{
+    display: flex; /*Flexbox*/
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#userCardContainer div{
+    margin: 16px;
+}
+
+
+.domiform{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.domicard{
+    width: 18rem;
+}
