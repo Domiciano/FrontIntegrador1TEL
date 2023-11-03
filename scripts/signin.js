@@ -12,8 +12,7 @@ signinButton.addEventListener('click', async function(){
         method: 'POST',
         headers: {
             'Content-Type':'application/json'
-        },
-        body: data
+        }
     });
     if(response.status == 200){
         let responseData = await response.json();
