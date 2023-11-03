@@ -2,10 +2,11 @@ class UserCard{
 
     constructor(user){
         this.user = user;
-        console.log("Dentro del constructor: "+this.user.nombreDeUsuario);
     }
 
     render(){
+
+        //1. Armar el componente
         let container = document.createElement('div'); //<div></div>
         container.classList.add('card');
         container.classList.add('domicard');
@@ -20,13 +21,39 @@ class UserCard{
         let title = document.createElement('h5');
         title.classList.add('card-title');
 
+        let description = document.createElement('p');
+        description.classList.add('card-text');
+        description.innerHTML = "De click sobre el botón para obtener mayor información";
+
+        let button = document.createElement('a');
+        button.classList.add('btn');
+        button.classList.add('btn-primary');
+        button.setAttribute('href', '#');
+        button.innerHTML = 'More';
+
         cardbody.appendChild(title);
+        cardbody.appendChild(description);
+        cardbody.appendChild(button);
         container.appendChild(img);
         container.appendChild(cardbody);
 
-        title.innerHTML = this.user.nombreDeUsuario;
+        //2. Poner información sobre el component
+        title.innerHTML = this.user.username;
+
+        //3. Acciones del component
+        button.addEventListener('click', this.action.bind(this)); //especificar con cual this va a operar
+
 
         return container;
+    }
+
+    //Dentro de las clases, las funciones se definen asi
+
+    action(event){
+        event.preventDefault(); //Previene la ejecución de su acción por defecto
+        alert(this.user.username);
+        window.localStorage.setItem('userClicked', JSON.stringify(this.user));
+        window.location.href = '/userDetail.html';
     }
 
 
